@@ -9,7 +9,6 @@ export class CheckBalanceController {
         const result = await checkBalanceUseCase.execute({
             userId
         });
-        console.log(result);
 
         return response.json(result);
 
