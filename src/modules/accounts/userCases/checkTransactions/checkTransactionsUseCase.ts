@@ -37,6 +37,14 @@ export class CheckTransactionsUseCase {
                     }
 
                 ]
+            },
+            include: {
+                cretidedAccount: {
+                    include: { user: true }
+                },
+                debitedAccount: {
+                    include : { user: true }
+                }
             }
         });
 

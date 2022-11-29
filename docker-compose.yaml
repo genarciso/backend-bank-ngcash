@@ -21,6 +21,18 @@ services:
       - db
     ports:
       - "3001:3000"
+  
+  web-bank:
+    stdin_open: true
+    build:
+      context: ../frontend-bank-ngcash/
+      dockerfile: ../frontend-bank-ngcash/Dockerfile
+    container_name: web-bank
+    depends_on:
+      - api-bank
+    ports:
+      - "5173:5173"
+
 volumes:
   db:
     driver: local
