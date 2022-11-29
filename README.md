@@ -11,9 +11,9 @@ Possuir docker e docker-compose. Ou então possuir o node, postgres e yarn insta
 
 ### Docker
 
-A parte backend da aplicação possui uma imagem docker. Então para se utilizar dela:
+A aplicação possui imagens dockeres. Então para se utilizar dela:
 
-1º Crie um arquivo .env baseado ao env.example
+1º Crie um arquivo .env baseado ao env.example tanto do repositorio do backend como frontend
 
 2º Rode o comando:
 
@@ -44,3 +44,48 @@ A parte backend da aplicação foi realizada com o gerenciador YARN, então reco
 6º Rode o comando para inicializar o servidor:
 
     yarn dev
+    
+## Por onde começar?
+
+Para começar a utilizar a API é necessário criar um usuário, através da rota:
+    
+    http://{local_configurado}:{porta}/user
+
+Que para isso, deve ser enviado um *POST* com o objeto JSON:
+    
+    { 
+        "username": "teste"
+        "password": "12345678aA"
+    }
+
+Logo apos, esse passo, é necessário realizar o login do usuário na aplicação, para gerar o token. Para isso é necessário enviar um *POST*, para a rota:
+
+    http://{local_configurado}:{porta}/login
+
+Com o JSON:
+    
+    { 
+        "username": "teste"
+        "password": "12345678aA"
+    }
+ 
+## Checando rotas
+
+Para acessar a rota de saldo do cliente é necessário estar "logado" no sistema, e com isso enviar o token JWT na requisição *GET* na rota
+    
+    http://{local_configurado}:{porta}/user/balance
+
+Para o conseguir transferir o saldo que desejar é necessário estar "logado" no sistema, e com isso enviar o token JWT na requisição *POST* na rota
+
+    http://{local_configurado}:{porta}/user/transfer
+    
+Com o objeto JSON
+    
+    {
+	    "receiverUserUsername": "Gabriel",
+	    "value": 1.0
+    }
+    
+E por fim, para checar as transações é necessário o usuário estar "logado" no sistema  e com isso enviar o token JWT na requisição *GET* na rota:
+    
+    http://{local_configurado}:{porta}/user/transactions/?transactionCashIn=false&transactionCashOut=false&date=
