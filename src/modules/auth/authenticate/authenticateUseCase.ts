@@ -1,6 +1,6 @@
 
 import { compare } from "bcrypt";
-import { JsonWebTokenError, sign } from "jsonwebtoken";
+import { sign } from "jsonwebtoken";
 import { prisma } from "../../../database/prismaClient";
 import { IAuthenticateUser } from "./types";
 
@@ -29,6 +29,6 @@ export class AuthenticateUseCase {
             subject: user.id,
             expiresIn: "1d"
         });
-        return token;
+        return {access_token: token};
     }   
 }
