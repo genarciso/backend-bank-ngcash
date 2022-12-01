@@ -1,27 +1,17 @@
-# App de Transferência Bancárias com Express Node.JS
+# App de Transferência Bancárias com Express Node.JS e Prisma
 
-Está aplicação foi realizada com o intuito de aprender e desenvolver habilidades com o Express
+Está aplicação foi realizada com o intuito de aprender e desenvolver habilidades com o Express e o Prisma
 e também como requisito para a seleção técnica da TryBe.
 
 ## Instalação
 
 ### Pré requisitos
 
-Possuir docker e docker-compose. Ou então possuir o node, postgres e yarn instalado.
-
-### Docker
-
-A aplicação possui imagens dockeres. Então para se utilizar dela:
-
-1º Crie um arquivo .env baseado ao env.example tanto do repositorio do backend como frontend
-
-2º Rode o comando:
-
-    docker-compose up -d
+Possuir o node, postgres e yarn instalado.
 
 ### YARN
 
-A parte backend da aplicação foi realizada com o gerenciador YARN, então recomenda-se que se utilize dele.
+A parte backend da aplicação foi realizada com o gerenciador YARN, então recomenda-se que utilize-o.
 
 1º Crie um banco de dados postgres, para receber o banco da aplicação
 
@@ -37,17 +27,15 @@ A parte backend da aplicação foi realizada com o gerenciador YARN, então reco
 
     yarn install
 
-5º Rode o comando para realizar a migração do banco de dados:
+5º Rode o comando para realizar a migração e inicializar o servidor:
 
-    yarn prisma generate
-
-6º Rode o comando para inicializar o servidor:
-
-    yarn dev
+    yarn prod
     
 ## Por onde começar?
 
-Para começar a utilizar a API é necessário criar um usuário, através da rota:
+Para começar a utilizar a API é necessário utilizar algum cliente (ex.: Insomnia, Postman...)
+
+1 - Para criar um usuário, através da rota:
     
     http://{local_configurado}:{porta}/user
 
@@ -58,7 +46,7 @@ Que para isso, deve ser enviado um *POST* com o objeto JSON:
         "password": "12345678aA"
     }
 
-Logo apos, esse passo, é necessário realizar o login do usuário na aplicação, para gerar o token. Para isso é necessário enviar um *POST*, para a rota:
+2 - Para realizar o login do usuário na aplicação, para gerar o token. Para isso é necessário enviar um *POST*, para a rota:
 
     http://{local_configurado}:{porta}/login
 
@@ -71,11 +59,11 @@ Com o JSON:
  
 ## Checando rotas
 
-Para acessar a rota de saldo do cliente é necessário estar "logado" no sistema, e com isso enviar o token JWT na requisição *GET* na rota
+3 - Para acessar a rota de saldo do cliente é necessário estar "logado" no sistema, e com isso enviar o token JWT na requisição *GET* na rota
     
     http://{local_configurado}:{porta}/user/balance
 
-Para o conseguir transferir o saldo que desejar é necessário estar "logado" no sistema, e com isso enviar o token JWT na requisição *POST* na rota
+4 - Para o conseguir transferir o saldo que desejar é necessário estar "logado" no sistema, e com isso enviar o token JWT na requisição *POST* na rota
 
     http://{local_configurado}:{porta}/user/transfer
     
@@ -86,6 +74,6 @@ Com o objeto JSON
 	    "value": 1.0
     }
     
-E por fim, para checar as transações é necessário o usuário estar "logado" no sistema  e com isso enviar o token JWT na requisição *GET* na rota:
+5 - Para checar as transações é necessário o usuário estar "logado" no sistema  e com isso enviar o token JWT na requisição *GET* na rota:
     
     http://{local_configurado}:{porta}/user/transactions/?transactionCashIn=false&transactionCashOut=false&date=
