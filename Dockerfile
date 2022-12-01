@@ -1,5 +1,6 @@
 FROM node:alpine
 
+RUN mkdir /app
 WORKDIR /app
 
 # COPY package.json and package-lock.json files
@@ -21,8 +22,6 @@ COPY . .
 
 RUN yarn install
 
-RUN yarn prisma generate
-
 EXPOSE 3000
 
-CMD yarn dev
+CMD yarn prod
