@@ -45,6 +45,9 @@ export class CheckTransactionsUseCase {
                 debitedAccount: {
                     include : { user: true }
                 }
+            },
+            orderBy: {
+                createdAt: 'desc'
             }
         });
 

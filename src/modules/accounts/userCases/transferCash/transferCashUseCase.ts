@@ -27,6 +27,11 @@ export class TransferCashUseCase {
         });
 
         // Validações para a transferência
+        value = +value;
+        if (isNaN(value)) {
+            throw Error("Invalid type of value")
+        }
+
         if (value < 0) {
             throw Error("Value is invalid");
         }
