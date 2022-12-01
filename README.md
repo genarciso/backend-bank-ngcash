@@ -3,6 +3,10 @@
 Está aplicação foi realizada com o intuito de aprender e desenvolver habilidades com o Express e o Prisma
 e também como requisito para a seleção técnica da TryBe.
 
+Para acessar o backend da aplicação acesse:
+
+https://github.com/genarciso/frontend-bank-ngcash
+
 ## Instalação
 
 ### Pré requisitos
